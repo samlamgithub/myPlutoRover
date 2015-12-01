@@ -1,21 +1,21 @@
 package jiahaoPlutoRover;
 
 // class to store coordinate points
-public class Coordinate<X,Y> {
+public class Coordinate {
 
-	X first;
-	Y second;
+	int first;
+	int second;
 	
-	public Coordinate(X first, Y second) {
+	public Coordinate(int first, int second) {
 		this.first = first;
 		this.second = second;
 	}
 	
-	public X getFst() {
+	public int getFst() {
 		return first;
 	}
 	
-	public Y getSnd() {
+	public int getSnd() {
 		return second;
 	}
 

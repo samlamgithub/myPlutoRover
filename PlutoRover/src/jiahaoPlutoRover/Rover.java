@@ -39,22 +39,26 @@ public abstract class Rover {
 	}
 	
 	public void turn(int leftOrRight) {//leftOrRight is either -1 or 1
-		this.direction = Directions.values()[ (this.direction.ordinal()+leftOrRight)%4];
+		this.direction = Directions.values()[(this.direction.ordinal()+leftOrRight+4)%4];
 	}
 	
 	public PlutoMap getMyMap() {
 		return map;
 	}
 
-	public void receiveInstruction(String instructions) throws Exception {
+	public Coordinate receiveInstruction(String instructions) throws Exception {
 		for (char cha : instructions.toCharArray()) {
 			if (Movements.getMovementForChar(cha) != null) {
-				doMove(Movements.getMovementForChar(cha));
+				Coordinate nextCoor = doMove(Movements.getMovementForChar(cha));
+				if (nextCoor != null) {
+					return nextCoor;
+				}
 	        }
 		}
+		return null;
 	}
 	
-	public abstract <X,Y> Coordinate<X,Y> doMove(Movements mov);
+	public abstract Coordinate doMove(Movements mov);
 	
 
 }

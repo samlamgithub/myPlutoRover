@@ -8,34 +8,34 @@ public class MyPlutoRover extends Rover {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public Coordinate<Integer, Integer> doMove(Movements mov) {
+	public Coordinate doMove(Movements mov) {
 		Directions currentDirection = getDirection();
 		switch(mov) {
 			case F:
 				switch(currentDirection) {
 				case NORTH:
-					if(map.isObstacle(getXCoor()+1,getYCoor())) {
-						 return new Coordinate<>(getXCoor()+1, getYCoor());
-					}
-					xCoor++;
-					break;
-				case SOUTH:
-					if(map.isObstacle(getXCoor()-1,getYCoor())) {
-						 return new Coordinate<>(getXCoor()-1, getYCoor());
-					}
-					xCoor--;
-					break;
-				case EAST:
 					if(map.isObstacle(getXCoor(),getYCoor()+1)) {
-						 return new Coordinate<>(getXCoor(), getYCoor()+1);
+						 return new Coordinate(getXCoor(), getYCoor()+1);
 					}
 					yCoor++;
 					break;
-				case WEST:
+				case SOUTH:
 					if(map.isObstacle(getXCoor(),getYCoor()-1)) {
-						 return new Coordinate<>(getXCoor(), getYCoor()-1);
+						 return new Coordinate(getXCoor(), getYCoor()-1);
 					}
 					yCoor--;
+					break;
+				case EAST:
+					if(map.isObstacle(getXCoor()+1,getYCoor())) {
+						 return new Coordinate(getXCoor()+1, getYCoor());
+					}
+					xCoor++;
+					break;
+				case WEST:
+					if(map.isObstacle(getXCoor()-1,getYCoor())) {
+						 return new Coordinate(getXCoor()-1, getYCoor());
+					}
+					xCoor--;
 					break;
 				default:
 					break;
@@ -44,28 +44,28 @@ public class MyPlutoRover extends Rover {
 			case B:
 				switch(currentDirection) {
 				case NORTH:
-					if(map.isObstacle(getXCoor()-1,getYCoor())) {
-						 return new Coordinate<>(getXCoor()-1, getYCoor());
-					}
-					xCoor--;
-					break;
-				case SOUTH:
-					if(map.isObstacle(getXCoor()+1,getYCoor())) {
-						 return new Coordinate<>(getXCoor()+1, getYCoor());
-					}
-					xCoor++;
-					break;
-				case EAST:
 					if(map.isObstacle(getXCoor(),getYCoor()-1)) {
-						 return new Coordinate<>(getXCoor(), getYCoor()-1);
+						 return new Coordinate(getXCoor(), getYCoor()-1);
 					}
 					yCoor--;
 					break;
-				case WEST:
+				case SOUTH:
 					if(map.isObstacle(getXCoor(),getYCoor()+1)) {
-						 return new Coordinate<>(getXCoor(), getYCoor()+1);
+						 return new Coordinate(getXCoor(), getYCoor()+1);
 					}
 					yCoor++;
+					break;
+				case EAST:
+					if(map.isObstacle(getXCoor()-1,getYCoor())) {
+						 return new Coordinate(getXCoor()-1, getYCoor());
+					}
+					xCoor--;
+					break;
+				case WEST:
+					if(map.isObstacle(getXCoor()+1,getYCoor())) {
+						 return new Coordinate(getXCoor()+1, getYCoor());
+					}
+					xCoor++;
 					break;
 				default:
 					break;
